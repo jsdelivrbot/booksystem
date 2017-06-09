@@ -2,7 +2,7 @@
  * @Author: X_Heart
  * @Date: 2017-06-09 10:46:38
  * @Last Modified by: X_Heart
- * @Last Modified time: 2017-06-09 13:07:14
+ * @Last Modified time: 2017-06-10 00:14:24
  * @description: 
  */
 const express = require('express')
@@ -26,4 +26,4 @@ app.get('/editbook', router.editBook)
 // 修改图书业务
 app.get('/doedit/:id', router.doEdit)
 
-app.listen(3000)
+app.listen(80)
