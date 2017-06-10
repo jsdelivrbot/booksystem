@@ -2,7 +2,7 @@
  * @Author: X_Heart
  * @Date: 2017-06-09 10:49:47
  * @Last Modified by: X_Heart
- * @Last Modified time: 2017-06-09 13:16:51
+ * @Last Modified time: 2017-06-10 21:04:03
  * @description: 
  */
 const Book = require('../models/Book')
@@ -49,6 +49,20 @@ exports.doEdit = function(req, res, next) {
       }
       res.render('carry',{
         "title": "修改成功"
+      })
+    })
+}
+// 删除业务
+exports.doDel = function(req, res, next) {
+  let id = req.query.id
+    Book.removeBook(id, (err) => {
+      if (err) {
+        res.render('carry',{
+          "title": "删除失败"
+        })
+      }
+      res.render('carry',{
+        "title": "删除成功"
       })
     })
 }

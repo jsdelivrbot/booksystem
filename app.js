@@ -2,7 +2,7 @@
  * @Author: X_Heart
  * @Date: 2017-06-09 10:46:38
  * @Last Modified by: X_Heart
- * @Last Modified time: 2017-06-10 00:20:00
+ * @Last Modified time: 2017-06-10 20:58:47
  * @description: 
  */
 const express = require('express')
@@ -27,6 +27,8 @@ app.get('/doadd', router.doAdd)
 app.get('/editbook', router.editBook)
 // 修改图书业务
 app.get('/doedit/:id', router.doEdit)
+// 删除业务
+app.get('/dodel', router.doDel)
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));

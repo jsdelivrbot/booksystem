@@ -2,7 +2,7 @@
  * @Author: X_Heart
  * @Date: 2017-06-09 10:36:50
  * @Last Modified by: X_Heart
- * @Last Modified time: 2017-06-09 13:12:04
+ * @Last Modified time: 2017-06-10 20:59:58
  * @description: Book类
  */
 const mongoose = require('mongoose')
@@ -27,6 +27,11 @@ bookSchema.statics.findBookById = function(id, callback) {
 bookSchema.statics.updateBook = function(id, json, options, callback) {
   this.model('Book').update({"_id": mongoose.Types.ObjectId(id)}, json, options, callback)
 }
+// 删除图书
+bookSchema.statics.removeBook = function(id, callback) {
+  this.model('Book').remove({"_id": mongoose.Types.ObjectId(id)}, callback)
+}
+
 const bookModel = db.model("Book", bookSchema)
 
 module.exports = bookModel
