@@ -8,6 +8,7 @@
 const express = require('express')
 const app = express()
 const ejs = require('ejs')
+const bodyParser = require('body-parser')
 const router = require('./router/router')
 const axios = require('axios')
 
