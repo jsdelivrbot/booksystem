@@ -11,6 +11,9 @@ const ejs = require('ejs')
 const router = require('./router/router')
 const axios = require('axios')
 
+// req.body
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 // 设置模板引擎
 app.engine('html', ejs.__express)
 app.set('view engine', 'html')
@@ -94,6 +97,32 @@ app.get('/api/disc', (req, res) => {
     console.log(e)
   })
 })
+
+app.post('/server',function (req,res) {
+  const url = req.body.url
+  if (url) {
+    axios.post(url, {
+      params: req.body
+    }).then((response) => {
+      var data = response.data
+      res.json({
+        error: 0,
+        data,
+        message: 'sucess'
+      })
+    }).catch((e) => {
+      res.json({
+        error: 1,
+        message: e
+      })
+    })
+  } else {
+    res.json({
+      error: 1,
+      message: '需要传url参数！'
+    })
+  }
+});
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
